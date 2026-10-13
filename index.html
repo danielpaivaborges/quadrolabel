@@ -121,7 +121,7 @@ body{background:#fff!important}
 .cut-marks .print-strip .labelcell{position:relative}
 .cut-marks .print-strip .labelcell:after{content:"";position:absolute;inset:1px;border:1px dashed #b7bec8;pointer-events:none}
 @media print{
-@page{size:A4 portrait;margin:var(--print-margin,10mm)}
+@page{size:A4 portrait;margin:0} .sheet{box-sizing:border-box!important;width:210mm!important;min-height:297mm;padding:var(--print-margin,10mm)!important;margin:0!important}
 .print-strip{margin:0 0 var(--print-gap,6mm)!important;transform:scale(var(--scale-factor,1));transform-origin:top left;overflow:visible}
 .calibration{break-inside:avoid;transform:scale(var(--scale-factor,1));transform-origin:top left;color:#253f55}
 .cut-marks .print-strip .labelcell:after{border-color:#a8a8a8!important}
