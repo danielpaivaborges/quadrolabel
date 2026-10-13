@@ -229,6 +229,64 @@ body{background:#fff!important}
  body.printing-report .technical-report .report-warning{margin-top:20px;padding:10px;border:1px solid #9aaab6;font-size:8pt;line-height:1.5}
  body.printing-report .technical-report .report-foot{border-top:1px solid #cad5dd;margin-top:20px;padding-top:8px;font-size:8pt;color:#5d6f7b}
 }
+
+/* Mobile-first responsive hardening: placed last to override premium desktop rules */
+html,body{max-width:100%;overflow-x:clip}
+.layout,.layout>.panel,.layout>.view,.topview,.topview>*,.assembly-panel,.assembly-scroll,.rail-report,.rail-meter,.board,.cabinet,.board-rows,.rack-row,.rack-row .rail,.sheet{min-width:0;max-width:100%}
+.assembly-panel{width:100%}
+.assembly-panel summary{overflow-wrap:anywhere;word-break:normal}
+.assembly-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.rail-meter small,.bom-note,.subtle{overflow-wrap:anywhere}
+.rack-row .rail{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.board{overflow:hidden}
+.sheet{overflow-x:auto}
+@media(max-width:1000px){
+ .layout{grid-template-columns:minmax(0,1fr)!important;width:100%;max-width:100%;padding:14px;gap:15px}
+ .panel,.view{width:100%;min-width:0;padding:18px}
+ .topview{flex-wrap:wrap}
+ .topview h2{overflow-wrap:anywhere}
+ .rail-report{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+}
+@media(max-width:600px){
+ header{display:flex;flex-direction:column;align-items:stretch;padding:15px;gap:14px}
+ header h1{font-size:23px}
+ .head-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:8px}
+ .head-actions button{width:100%;white-space:normal;padding:10px 7px;font-size:12px}
+ .layout{padding:10px;gap:12px}
+ .panel,.view{padding:12px;border-radius:15px}
+ .section-title{align-items:flex-start;flex-wrap:wrap}
+ .section-title h2{overflow-wrap:anywhere}
+ .topview{display:flex;flex-wrap:wrap;gap:8px}
+ .topview h2{font-size:22px}
+ .topview .pill{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+ .formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .circuit-fields{grid-template-columns:minmax(0,1fr) 77px 74px}
+ .circuit-top{flex-wrap:wrap}
+ .circuit-top .actions{width:100%;justify-content:flex-start}
+ .rail-report{grid-template-columns:minmax(0,1fr)}
+ .assembly-panel{padding:12px;margin:10px 0}
+ .assembly-panel summary{font-size:14px;line-height:1.4}
+ .assembly-table{min-width:480px}
+ .board{margin:14px 0;padding:9px}
+ .cabinet{padding:9px 5px}
+ .rack-row .rail{padding:16px 5px}
+ .rack-index{font-size:9px}
+ .sheet{padding:10px}
+ .bom-toolbar{align-items:stretch}
+ .bom-toolbar button{width:100%}
+}
+@media(max-width:380px){
+ .head-actions{grid-template-columns:1fr}
+ .formgrid{grid-template-columns:minmax(0,1fr)}
+ .formgrid>[style*="grid-column"]{grid-column:auto!important}
+ .hardware-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media print{
+ html,body{max-width:none!important;overflow:visible!important}
+ .layout{display:block!important;max-width:none!important;padding:0!important}
+ .sheet{overflow:visible!important;max-width:none!important}
+ .assembly-panel,.rail-report{display:none!important}
+}
 </style></head><body>
 <header><div><h1>⬡ Quadro<span>Label</span> <small style="font-size:10px;border:1px solid #3f6a75;border-radius:12px;padding:3px 7px;color:#95f8da;vertical-align:middle;letter-spacing:1px">STUDIO</small></h1><p>Identificação profissional de circuitos elétricos</p></div><div class="head-actions"><button class="dark" id="save">↓ Salvar projeto</button><button class="dark" id="load">↑ Abrir projeto</button><input type="file" id="loadfile" accept=".json,application/json" hidden><button class="dark" id="reportBtn">▤ Relatório técnico</button><button class="primary" id="print">⎙ Imprimir etiquetas</button></div></header>
 <main class="layout"><aside class="panel"><div class="section-title"><h2>Configuração do quadro</h2><span class="pill">EDITOR</span></div><div class="formgrid"><div style="grid-column:span 2"><label for="project">Nome do projeto</label><input id="project" value="Quadro residencial"/></div><div><label for="module">Largura do módulo DIN (mm)</label><input id="module" type="number" value="18" min="10" max="30" step=".5"/></div><div><label for="style">Cores</label><select id="style"><option value="color">Colorido</option><option value="mono">Monocromático</option></select></div><div><label for="template">Modelo da etiqueta</label><select id="template"><option value="premium">Premium</option><option value="industrial">Industrial</option><option value="minimal">Minimalista</option><option value="technical">Técnico</option></select></div><div><label for="iconSize">Ícone: <output id="iconSizeValue">20</output> px</label><input id="iconSize" type="range" min="14" max="28" step="1" value="20"></div><div><label for="labelHeight">Altura: <output id="labelHeightValue">24</output> mm</label><input id="labelHeight" type="range" min="18" max="38" step="1" value="24"></div><div><label for="layout">Composição</label><select id="layout"><option value="vertical">Vertical</option><option value="horizontal">Horizontal</option></select></div><div><label for="iconPosition">Posição do ícone</label><select id="iconPosition"><option value="start">Antes do texto</option><option value="end">Depois do texto</option><option value="top">Acima do texto</option></select></div><div><label for="compactText">Textos estreitos</label><select id="compactText"><option value="auto">Abreviar automaticamente</option><option value="full">Nome completo</option></select></div><div><label for="textSize">Texto: <output id="textSizeValue">10</output> px</label><input type="range" id="textSize" min="8" max="13" value="10" step=".5"></div></div><hr class="sep"/><div class="section-title"><h2>Fileiras DIN</h2><span class="pill">QUADRO</span></div><div class="formgrid"><div><label for="rowCapacity">Módulos por fileira</label><select id="rowCapacity"><option>12</option><option selected>18</option><option>24</option><option>36</option></select></div><div><label for="deviceVisual">Dispositivos 3D</label><select id="deviceVisual"><option value="atlas">Atlas elétrico</option><option value="classic">Clássico</option></select></div><div style="grid-column:span 2"><label for="cabinetView">Apresentação do quadro</label><select id="cabinetView"><option value="front">Vista frontal</option><option value="perspective">Perspectiva 3D</option></select></div></div><hr class="sep"/><div class="section-title"><h2>Impressão A4</h2><span class="pill">1:1</span></div><div class="formgrid"><div><label for="marginMm">Margem (mm)</label><input id="marginMm" type="number" min="5" max="25" value="10"></div><div><label for="gapMm">Entre tiras (mm)</label><input id="gapMm" type="number" min="2" max="20" value="6"></div><div><label for="scalePrint">Escala de calibração (%)</label><input id="scalePrint" type="number" min="95" max="105" step=".1" value="100"></div><div><label for="cutMarks">Marcas de corte</label><select id="cutMarks"><option value="yes">Exibir</option><option value="no">Ocultar</option></select></div><div style="grid-column:span 2"><label for="rulerPrint">Régua de referência (50 mm)</label><select id="rulerPrint"><option value="yes">Exibir na impressão</option><option value="no">Ocultar</option></select></div></div><hr class="sep"/><div class="section-title"><h2>Circuitos</h2><div class="actions"><button class="mini" id="addSpace">+ Espaço vazio</button><button class="mini" id="addReserve">+ Reserva</button><button class="mini primary" id="add">+ Adicionar</button></div></div><div class="circuits" id="circuits"></div><hr class="sep"/><div class="actions"><button id="reset">Restaurar exemplo</button><button id="duplicate">Duplicar último</button></div></aside>
