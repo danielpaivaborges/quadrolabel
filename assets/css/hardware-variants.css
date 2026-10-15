@@ -1,0 +1,80 @@
+/* QuadroLabel | Variações físicas de equipamentos DIN — apenas tela.
+   Frentes genéricas por largura não certificam número de polos ou modelos reais. */
+@media screen {
+  #previewArea .board .rack-row .breaker:has(.ql-hd-art) > .breaker-brand,
+  #previewArea .board .rack-row .breaker:has(.ql-hd-art) > .breaker-model,
+  #previewArea .board .rack-row .breaker:has(.ql-hd-art) > .lever,
+  #previewArea .board .rack-row .breaker:has(.ql-hd-art) > .device-rating {
+    display:none!important;
+  }
+  #previewArea .board .rack-row .breaker:has(.ql-hd-art) {
+    background:none!important;border:none!important;
+  }
+  #previewArea .board .rack-row .breaker:has(.ql-hd-art) .ql-hd-img {
+    width:calc(100% - 1px)!important;
+    height:100%!important;
+    object-fit:fill!important;
+    image-rendering:auto;
+  }
+  .ql-asset-variant{
+    color:#a4dfd1;font-weight:700;font-size:10px;
+    line-height:1.5;margin:6px 0 10px;padding:8px 10px;
+    border-radius:8px;background:#163d4b;border:1px solid #3c756e;
+  }
+  .quick-library-grid{
+    grid-template-columns:repeat(auto-fill,minmax(145px,1fr))!important;
+    max-height:570px!important;padding:12px!important;
+    scrollbar-color:#3a827e #142c3e;
+  }
+  .quick-library-grid button[data-quick-device]{
+    min-height:208px;
+    justify-content:space-between;
+    padding:12px 10px 10px;
+    border:1px solid #3b6879;
+    box-shadow:0 6px 10px #03152040,inset 0 1px #c9e9e819;
+    transition:transform .15s,border-color .15s,box-shadow .15s;
+  }
+  .quick-library-grid button[data-quick-device]:hover{
+    transform:translateY(-2px);
+    border-color:#67dab5;
+    box-shadow:0 9px 15px #0415215e,0 0 0 1px #33bca47f;
+  }
+  .quick-library-grid button .quick-art{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;height:130px;max-width:100%;
+    overflow:hidden;
+  }
+  .quick-library-grid button .quick-art .ql-hd-art{
+    height:123px;max-width:100%;width:100%;
+  }
+  .quick-library-grid button .quick-art .ql-hd-img{
+    width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;
+    filter:drop-shadow(2px 6px 3px #02131b80);
+  }
+  .quick-library-grid button strong{font-size:10px;line-height:1.4;min-height:28px}
+  .ql-catalogue-tools{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:9px;margin:10px 12px 0;
+    padding:10px;background:#0e293b;border:1px solid #3c6172;border-radius:9px;
+  }
+  .ql-catalogue-tools label{display:flex;align-items:center;gap:8px;font-size:10px;
+    color:#afd9df;min-width:150px;flex:1}
+  .ql-catalogue-tools input{
+    flex:1;min-width:0;max-width:none;background:#173e4e;
+    border:1px solid #4b7b85;border-radius:7px;padding:8px 9px;
+    color:#eafff8;font-size:11px;min-height:34px;
+  }
+  .ql-catalogue-tools #quickLibraryCount{font-size:10px;color:#a2dacb;white-space:nowrap}
+  .quick-library-grid button[hidden]{display:none!important}
+  .ql-catalogue-empty{padding:16px;color:#a6c7d2;font-size:12px}
+  .ql-din-notice{font-size:10px;color:#a0c0c7;line-height:1.5;margin:0 12px 10px}
+}
+@media screen and (max-width:680px) {
+  .quick-library-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .quick-library-grid button[data-quick-device]{min-height:193px}
+  .ql-catalogue-tools{align-items:stretch}
+  .ql-catalogue-tools label{flex:1 1 100%}
+}
+@media print {
+  .ql-asset-variant,.ql-catalogue-tools,.ql-din-notice{display:none!important}
+}
