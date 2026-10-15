@@ -787,7 +787,7 @@ function renderSelectedDevice(){const panel=$('contextBody');if(!panel)return;co
  row.classList.toggle('ql-selected-rail',!!selected);
  const pos=selected?findDinPosition(Number(selected.dataset.inspect)):null;
  row.querySelectorAll('.din-ruler-slot').forEach((slot,j)=>slot.classList.toggle('din-slot-active',!!pos&&j+1>=pos.start&&j+1<=pos.end));
-});if(!c){
+});updatePanelGuide();if(!c){
  const total=circuits.reduce((n,x)=>n+(Number(x.poles)||0),0);
  const railCount=Math.max(plannedRailCount,railDistribution(circuits).length);
  const usable=railCount*rowCapacity();
@@ -857,6 +857,30 @@ function syncRealPanelMode(){
    const btn=$(id);if(!btn)return;btn.setAttribute('aria-pressed',String(on));btn.textContent=on?yes:no;
    btn.disabled=!realCabinet&&id!=='realCabinetToggle';
  });
+}
+function updatePanelGuide(){
+ const host=document.querySelector('#previewArea .ql-panel-callouts');if(!host)return;
+ const items=circuits.filter(c=>!c.empty);
+ const rows=railDistribution(circuits);
+ const seen=new Map();
+ items.forEach(c=>{
+  const key=hardwareTypes[c.device]?c.device:c.type==='dr'?'idr':c.type==='dps'?'dps':'mcb';
+  seen.set(key,(seen.get(key)||0)+1);
+ });
+ const named=[...seen].sort((a,b)=>b[1]-a[1]).slice(0,4).map(([key,count])=>count+'× '+hardwareTypes[key]).join(' · ');
+ const selected=items.find(c=>c.id===selectedDeviceId);
+ const pos=selected?findDinPosition(circuits.indexOf(selected)):null;
+ const entries=[
+  ['1','Barramento de neutro (N)','Localização ilustrativa; as ligações reais dependem do projeto.'],
+  ['2','Trilhos DIN',''+rows.length+' trilho(s) com itens cadastrados, '+items.length+' dispositivos.'],
+  ['3','Barramento de proteção (PE)','Identificação visual do barramento inferior de proteção.'],
+  ['4','Equipamentos cadastrados',named||'Nenhum dispositivo cadastrado.'],
+  ['5','Canaletas e condutores','Representação apenas visual. Não indica origem, destino ou seção de fios.']
+ ];
+ if(selected)entries.push(['6','Equipamento selecionado',safe(selected.name||'Sem nome')+(pos?' · trilho '+pos.rail+', módulos '+pos.start+'–'+pos.end:'')]);
+ host.innerHTML='<h4 class="ql-explain-title">LEITURA ILUSTRADA DO QUADRO</h4>'+
+  entries.map(([id,head,detail])=>'<div class="ql-explain-entry"><span class="ql-callout-num">'+id+'</span><p><strong>'+safe(head)+'</strong> — '+(id==='6'?detail:safe(detail))+'</p></div>').join('')+
+  '<div class="ql-explain-foot">A vista explica a posição visual dos elementos; não é diagrama de ligações, nem verificação de segurança elétrica.</div>';
 }
 function panelInterrailHTML(){
  return '<div class="ql-panel-interrail" aria-hidden="true"><svg viewBox="0 0 900 75" preserveAspectRatio="none">'+
