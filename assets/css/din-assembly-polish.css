@@ -1,0 +1,89 @@
+/* QuadroLabel Studio — visual-only DIN assembly finishing.
+   This sheet intentionally leaves A4 printing and label dimensions untouched. */
+@media screen {
+  #previewArea .board .rack-row .breakers {
+    position:relative;
+    isolation:isolate;
+    box-sizing:border-box;
+    min-width:max-content;
+  }
+  #previewArea .board .rack-row .breakers::before {
+    content:"";position:absolute;z-index:-1;left:0;right:0;top:50%;
+    transform:translateY(-50%);height:24px;pointer-events:none;
+    background:linear-gradient(to bottom,#6d8798 0%,#eaf1f5 13%,#9db6c4 24%,#dde8ee 36%,#718c9d 45%,#9bb4c3 52%,#e2edf3 64%,#90a7b7 83%,#5c7687 100%);
+    border-top:1px solid #5a7588;border-bottom:1px solid #567082;
+    box-shadow:0 2px 5px #2b52694a,inset 0 2px 2px #ffffff94;
+  }
+  #previewArea .board .rack-row .breakers::after {
+    content:"";position:absolute;z-index:-1;left:0;right:0;bottom:7px;
+    height:5px;pointer-events:none;
+    background:linear-gradient(#5d7b8d,#deebf3 48%,#637f91);border-radius:3px;
+    box-shadow:0 2px 3px #40596f4f;
+  }
+  .rack-index-rich {
+    display:flex!important;flex-wrap:wrap;align-items:center;
+    justify-content:space-between;gap:6px 14px;margin-bottom:8px;
+    text-overflow:initial!important;white-space:normal!important;
+  }
+  .rack-index-titles,.rack-index-right{display:flex;align-items:center;gap:9px;min-width:0}
+  .rack-index-titles strong{font-size:10px;color:#254a60;letter-spacing:1.2px}
+  .rack-index-titles span{font-size:10px;font-weight:700;color:#537282;letter-spacing:0}
+  .rack-index-right{margin-left:auto}
+  .rack-usage-track{display:block;overflow:hidden;width:75px;height:6px;border-radius:5px;
+    border:1px solid #98aebb;background:#d1e0e8;box-shadow:inset 0 1px 2px #56788855}
+  .rack-usage-track>i{display:block;height:100%;border-radius:4px;
+    background:linear-gradient(90deg,#247a8b,#39b48f)}
+  .rack-free-count{font-size:10px;white-space:nowrap;letter-spacing:0;color:#597788;font-weight:800}
+  #previewArea .board .rack-row .breakers .rail-free-tail{
+    display:flex!important;align-items:center;justify-content:center;flex-direction:column;
+    flex:0 0 auto;align-self:flex-end;height:var(--ql-hardware-h,168px);
+    box-sizing:border-box;min-height:0;min-width:0;margin:0;padding:3px 2px;
+    border:1px dashed #8aa5b5;border-radius:4px;color:#527484;
+    background:repeating-linear-gradient(90deg,#d3e4ecb8 0 7px,#b5cbd9a0 7px 8px);
+    cursor:pointer;box-shadow:inset 1px 2px 4px #fff8,inset -2px -2px 5px #7896a636;
+    position:relative;z-index:1;overflow:hidden;
+    transition:border-color .16s,background-color .16s,color .16s;
+  }
+  .rail-free-tail .rail-tail-plus {
+    font-size:22px;font-weight:500;display:grid;place-items:center;
+    width:30px;height:30px;border:1px solid #85b9ad;border-radius:50%;
+    color:#327965;background:#e7f8f1dd;line-height:1;
+  }
+  .rail-free-tail .rail-tail-label{
+    color:#3f687b;font-size:10px;font-weight:850;letter-spacing:.3px;
+    line-height:1.2;text-align:center;margin-top:8px;white-space:nowrap;
+  }
+  .rail-free-tail small{font-size:8px;font-weight:800;letter-spacing:.1em;margin-top:5px;color:#6e91a1}
+  .rail-free-tail.rail-tail-narrow .rail-tail-plus{width:19px;height:19px;font-size:14px;flex:none}
+  .rail-free-tail.rail-tail-narrow .rail-tail-label{
+    font-size:9px;writing-mode:vertical-rl;max-height:88px;letter-spacing:0}
+  .rail-free-tail.rail-tail-narrow small{display:none}
+  .rail-free-tail:hover,.rail-free-tail:focus-visible,.rail-free-tail.chosen {
+    border-color:#2dc89d!important;outline:2px solid #4adaaf;outline-offset:-2px;
+    background:repeating-linear-gradient(90deg,#cef6e5 0 7px,#a7e4ce 7px 8px);
+    color:#156b5b;
+  }
+  .rail-free-tail:hover .rail-tail-plus{background:#52d8ab;color:#0b4f44;border-color:#2b9c78}
+  .ql-selected-rail>.rack-index-rich .rack-index-titles strong{color:#168673}
+  .ql-selected-rail>.rack-index-rich .rack-usage-track{border-color:#35c59b}
+  .ql-selected-rail>.rack-index-rich .rack-usage-track>i{background:#20b18b}
+  /* Hovered device reveals adjacent insertion point, not every plus simultaneously. */
+  .board .rack-row .breakers:hover .rail-insert::before{
+    opacity:0;transform:translateY(-40%) scale(.75);
+  }
+  .board .rack-row .breakers .rail-insert:hover::before,
+  .board .rack-row .breakers .rail-insert:focus-visible::before,
+  .board .rack-row .breakers .rail-insert.chosen::before,
+  .board .rack-row .breakers .rail-insert:has(+ .breaker:hover)::before,
+  .board .rack-row .breakers .breaker:hover + .rail-insert::before,
+  .board .rack-row .breakers .rail-insert:has(+ .empty-module:hover)::before,
+  .board .rack-row .breakers .empty-module:hover + .rail-insert::before{
+    opacity:1;transform:translateY(-40%) scale(1);
+  }
+}
+@media screen and (max-width:700px){
+  .rack-index-titles strong{font-size:9px}
+  .rack-usage-track{width:52px}
+  .board .rack-row .breakers .rail-insert::before{opacity:0}
+}
+@media print{.rail-free-tail,.rack-index-right{display:none!important}}
