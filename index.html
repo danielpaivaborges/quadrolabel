@@ -578,17 +578,18 @@ const rowCapacity=()=>Number($('rowCapacity').value)||18;
 const textSize=()=>Math.min(13,Math.max(8,Number($('textSize').value)||10));
 const hardwarePhotoFiles={
 mcb:'assets/devices/mcb.webp',
-idr:'Residual current device (RCD).jpg',
+idr:'Residual Current Circuit Breaker.JPG',
 dps:'OVR T1 25.jpg',
 contactor:'Contactor DIN IEK bkg removing example.jpg',
-timer:'Sie zeitrel.jpg',
-meter:'Mono modulaire POLIER.jpg',
-isolator:'Switch 40A.JPG',
-voltageRelay:'A voltage controller.jpg',
-protector:'A voltage controller.jpg',
+timer:'ALC18.JPG',
+meter:'Electricity meter (DIN rail).jpg',
+isolator:'Circuit breaker 2 pole on DIN rail.JPG',
+voltageRelay:'ALC18.JPG',
+protector:'ALC18.JPG',
 powerSupply:'DIN100W-250x167 p.png',
-automation:'48 GPIO Ethernet interface.jpg'
+automation:'DIN100W-250x167 p.png'
 };
+const devicePhotoValidated=new Set(['mcb','idr','dps','contactor','timer','isolator','powerSupply']);
 function photoSource(kind){const name=hardwarePhotoFiles[kind];return !name?'':name.startsWith('assets/')?name:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(name)+'?width=500'}
 const hardwareTypes={mcb:'Disjuntor termomagnético',idr:'Interruptor diferencial residual',dps:'Dispositivo de proteção contra surtos',contactor:'Contator modular',timer:'Temporizador',meter:'Medidor de energia',isolator:'Chave seccionadora',voltageRelay:'Relé de tensão',protector:'Protetor de subtensão/sobretensão',powerSupply:'Fonte DIN',automation:'Módulo de automação'};
 let hardwareRenderSequence=0;
@@ -621,7 +622,7 @@ const vectorArt='<svg viewBox="0 0 82 175" role="img" aria-label="'+safe(hardwar
 '<text x="41" y="144" text-anchor="middle" fill="#60798a" font-family="Arial" font-size="5.2" letter-spacing=".5">MODULAR · DIN</text>'+
 '<rect x="11" y="23" width="1.8" height="127" rx=".8" fill="url(#'+uid+'-edge)" opacity=".45"/></svg>';
 if($('deviceVisual')?.value!=='photo')return vectorArt;
-const src=photoSource(k);if(!src)return vectorArt;
+if(!devicePhotoValidated.has(k))return vectorArt;const src=photoSource(k);if(!src)return vectorArt;
 return '<span class="ql-photo-frame" aria-label="'+safe(hardwareTypes[k])+' · imagem ilustrativa"><img class="ql-photo" src="'+src+'" alt="'+safe(hardwareTypes[k])+'" loading="lazy" decoding="async" draggable="false" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="ql-photo-fallback" hidden>'+vectorArt+'</span></span>';
 }
 
