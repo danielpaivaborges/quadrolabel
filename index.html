@@ -780,6 +780,7 @@ document.querySelectorAll('.mobile-nav a[href="#materialsArea"]').forEach(a=>a.a
 document.querySelectorAll('.mobile-nav a[href="#previewArea"]').forEach(a=>a.addEventListener('click',()=>setWorkspaceTab('montagem')));
 setWorkspaceTab('montagem');
 renderQuickLibrary();
+$('deviceVisual').addEventListener('change',()=>{edit();draw();renderQuickLibrary();closeFloatingLibrary()});
 $('focusDevices').addEventListener('click',()=>{const active=$('previewArea').classList.toggle('device-focus');$('focusDevices').setAttribute('aria-pressed',String(active));$('focusDevices').textContent=active?'▣ Gabinete completo':'◎ Foco nos dispositivos'});
 const cabinetWizardPresets={compacto:{capacity:12,rails:2,expansion:2},residencial:{capacity:18,rails:3,expansion:3},ampliado:{capacity:24,rails:3,expansion:4},comercial:{capacity:24,rails:4,expansion:4}};
 function wizardSettings(){return {capacity:Number($('wizardCapacity').value)||18,rails:Number($('wizardRails').value)||3,expansion:Number($('wizardExpansion').value)||0}}
