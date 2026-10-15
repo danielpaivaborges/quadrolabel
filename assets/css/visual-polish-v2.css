@@ -1,0 +1,135 @@
+/* QuadroLabel Studio | Visual polish 2.0
+   Exclusively screen visualization; no electrical netlist, no print-layout changes. */
+@media screen {
+  #previewArea .viewport-heading {
+    display:grid!important;grid-template-columns:minmax(170px,1fr) minmax(0,2.6fr);
+    gap:16px!important;align-items:center!important;margin-bottom:16px!important;
+  }
+  #previewArea .viewport-heading>div:first-child{align-self:center;min-width:0}
+  #previewArea .viewport-controls {
+    display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;
+    align-items:center!important;justify-content:flex-end!important;
+    gap:6px!important;width:auto!important;max-width:none!important;
+    margin:0!important;min-width:0!important;
+  }
+  #previewArea .viewport-controls button,
+  #previewArea .viewport-controls select{flex:0 0 auto!important;margin:0!important;
+    min-height:31px!important;max-width:100%;font-size:10px!important;padding:6px 9px!important;
+    line-height:1.25!important;white-space:nowrap!important}
+  #previewArea .viewport-controls label{font-size:10px!important;margin:0 3px 0 8px!important}
+  #previewArea .viewport-controls .viewport-live{flex:0 0 auto!important;
+    width:auto!important;margin:0 0 0 6px!important;text-align:right}
+  #previewArea .viewport-heading .ql-wire-style-control {
+    display:flex;align-items:center;gap:5px;padding:0 0 0 4px;
+    color:#b7d8df;font-size:10px;white-space:nowrap;
+  }
+  #previewArea .viewport-heading #panelWireStyle{background:#173449;border:1px solid #4c788a;
+    border-radius:8px;color:#dcf7f4;min-width:112px!important}
+  #previewArea .viewport-heading #panelWireStyle:disabled{opacity:.4}
+
+  /* Cabinet realism should come from consistent material light and shadow, not arbitrary gaps. */
+  #previewArea.ql-real-panel .cabinet {
+    background:linear-gradient(110deg,#d5e5ee 0%,#f6fafc 5%,#dce9f0 55%,#b8cdd8 98%)!important;
+  }
+  #previewArea.ql-real-panel .ql-busbar .ql-bar-metal{
+    background:
+      radial-gradient(circle at 13px 50%,#354951 0 2px,#f0f0ec 2.5px 4px,#66818b 4.5px 5px,transparent 5.5px) 0 0/26px 100% repeat-x,
+      linear-gradient(180deg,#f1d8a9 0%,#ae8150 18%,#e4bc80 44%,#bd8651 75%,#f2d7af 100%);
+    box-shadow:inset 0 2px 2px #fff7,inset 0 -2px #744e2c64,0 3px 5px #35505c52;
+  }
+  #previewArea.ql-real-panel .ql-panel-duct{opacity:.91}
+  #previewArea.ql-real-panel .ql-panel-upper{border-bottom:2px solid #a4bcc8}
+  #previewArea.ql-real-panel .rack-row .rail{background-color:#d6e5ed!important}
+  #previewArea.ql-real-panel .ql-panel-lower{padding-bottom:11px!important}
+
+  /* Wiring illustration: guided channels only, never apparent terminal connections. */
+  #previewArea.ql-cables-organized .ql-panel-wires svg{
+    filter:drop-shadow(1px 2px 1px #46647443);
+  }
+  #previewArea.ql-cables-organized .ql-wire-path{stroke-width:5}
+  #previewArea.ql-cables-organized .ql-panel-wires svg>path:nth-of-type(n+4),
+  #previewArea.ql-cables-organized .ql-panel-interrail svg>path:nth-of-type(n+4){opacity:.14}
+  #previewArea.ql-cables-detailed .ql-panel-wires,
+  #previewArea.ql-cables-detailed .ql-panel-interrail {
+    background:
+      repeating-linear-gradient(90deg,#dbe9f000 0 30px,#8aabba17 30px 31px),
+      linear-gradient(#e6f0f5ab,#bed6e181);
+  }
+  #previewArea.ql-cables-detailed .ql-wire-path{
+    stroke-width:6.5;stroke-linejoin:round;stroke-linecap:round;
+    filter:drop-shadow(1.5px 2.5px 1px #335b6a80);
+  }
+  #previewArea.ql-cables-detailed .ql-panel-wires{height:104px}
+  #previewArea.ql-cables-detailed .ql-panel-interrail{height:78px}
+  #previewArea .ql-panel-wires::after{
+    content:"FIOS ILUSTRATIVOS · SEM LIGAÇÕES ELÉTRICAS DEFINIDAS";
+    position:absolute;right:9px;bottom:5px;max-width:92%;
+    padding:2px 5px;background:#e3eff3d9;color:#66808b;
+    border-radius:4px;font-size:8px;letter-spacing:.04em;font-weight:800;
+  }
+
+  /* A compact explanatory layer modeled after an annotated consumer unit. */
+  #previewArea .ql-panel-callouts {
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    border-color:#92b9c7!important;background:linear-gradient(#f4fafc,#e1eef4)!important;
+    box-shadow:0 4px 9px #3e607b24;
+    padding:13px!important;gap:9px!important;
+  }
+  .ql-panel-callouts .ql-explain-entry{
+    min-width:0;display:flex;align-items:flex-start;gap:9px;
+    padding:9px 10px;background:#ffffffad;border:1px solid #c0d5df;border-radius:8px;
+    color:#365466;font-size:10px;line-height:1.5;
+  }
+  .ql-explain-entry p{margin:0;overflow-wrap:anywhere}
+  .ql-explain-entry strong{color:#234d66}
+  .ql-explain-entry .ql-callout-num{width:23px;height:23px;flex:0 0 23px}
+  #previewArea .ql-explain-title{grid-column:1/-1;margin:0;
+    color:#2b6071;font-size:10px;text-transform:uppercase;letter-spacing:.13em}
+  #previewArea .ql-panel-callouts .ql-explain-foot{grid-column:1/-1;color:#7d6260;
+    background:#fdf6ed;border:1px solid #e7d4ba;padding:8px;border-radius:6px;
+    font-size:10px;line-height:1.5}
+
+  /* Contextual inspector - empty and populated device states. */
+  #previewArea .context-panel{border-color:#3f7785;box-shadow:0 13px 25px #03131c62}
+  .ql-context-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:16px 0 9px}
+  .ql-context-metric{background:#163c4b;border:1px solid #376876;border-radius:9px;
+    padding:10px 7px;text-align:center;min-width:0}
+  .ql-context-metric strong{display:block;font-size:18px;font-variant-numeric:tabular-nums;color:#e9fff8}
+  .ql-context-metric small{display:block;margin-top:3px;color:#89b8c6;font-size:9px;line-height:1.35}
+  .ql-context-mini-label{font-size:10px;color:#9bead2;font-weight:850;letter-spacing:.06em;margin-top:13px;text-align:left}
+  .ql-context-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:9px 0 5px}
+  .ql-context-quick button{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:78px;
+    padding:8px 6px;border:1px solid #477d86;background:#1c4253;border-radius:9px;color:#d2f8ed;cursor:pointer}
+  .ql-context-quick button:hover{border-color:#6fe7ba;background:#245b62}
+  .ql-context-quick .ql-q-icon{font-size:21px;line-height:1.2}
+  .ql-context-quick small{font-size:9px;line-height:1.3;margin-top:6px;text-align:center}
+  .ql-context-note{font-size:9px;line-height:1.5;color:#88adbb;text-align:left;margin:12px 0 0}
+  .ql-context-kind-check{margin:9px 0;padding:11px;background:#473a28;border:1px solid #b9975c;
+    border-radius:9px;color:#f5d7a4;font-size:10px;line-height:1.5}
+  .ql-context-kind-check strong{display:block;margin-bottom:5px}
+  .ql-context-kind-check button{display:inline-block;border:1px solid #d8bc83;
+    border-radius:7px;background:#705434;color:#fff0c9;padding:7px 10px;margin-top:8px;
+    font-size:10px;cursor:pointer}
+  .ql-context-kind-check button:hover{background:#86663e}
+  .ql-context-metadata{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:11px 0}
+  .ql-context-data{padding:9px 10px;border-radius:8px;background:#193c4c;border:1px solid #365d71}
+  .ql-context-data span{display:block;font-size:9px;color:#8eb6c4;letter-spacing:.06em}
+  .ql-context-data strong{display:block;font-size:12px;color:#f0fff9;margin-top:4px;overflow-wrap:anywhere}
+  #previewArea .context-art:has(.ql-hd-art) .ql-hd-img{object-fit:contain!important}
+}
+@media screen and (max-width:920px) {
+  #previewArea .viewport-heading{grid-template-columns:1fr;gap:8px!important}
+  #previewArea .viewport-controls{justify-content:flex-start!important}
+  #previewArea .viewport-controls .viewport-live{margin-left:auto!important}
+}
+@media screen and (max-width:680px){
+  #previewArea .viewport-controls{gap:6px!important}
+  #previewArea .viewport-controls button{flex:0 1 auto!important;font-size:9px!important}
+  #previewArea .viewport-heading #panelWireStyle{min-width:105px!important}
+  #previewArea .ql-panel-callouts{grid-template-columns:1fr!important}
+  .ql-context-quick button{min-height:67px}
+}
+@media print {
+  .ql-context-overview,.ql-context-mini-label,.ql-context-quick,.ql-context-note,
+  .ql-context-kind-check,.ql-context-metadata,.ql-wire-style-control{display:none!important}
+}
