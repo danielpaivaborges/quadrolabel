@@ -87,3 +87,14 @@
   .board .rack-row .breakers .rail-insert::before{opacity:0}
 }
 @media print{.rail-free-tail,.rack-index-right{display:none!important}}
+
+@media screen{
+  .board .rack-row .din-ruler-slot.din-slot-active{
+    background:linear-gradient(#54ddbb,#159b85)!important;
+    color:#073e36!important;
+    border-right-color:#238f78!important;
+    box-shadow:inset 0 1px 1px #b7fff9a0,0 0 5px #1ea78c75;
+    font-weight:900;
+  }
+  .rack-row.ql-selected-rail>.rack-index-rich .rack-free-count{color:#177f70}
+}
