@@ -1,0 +1,191 @@
+/* QuadroLabel • montador realista 1.0
+ * Apresentação exclusivamente visual. Não representa diagrama unifilar,
+ * pontos de conexão, bitolas, aterramento ou validação da instalação. */
+@media screen {
+  .ql-panel-mode-btn {
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:33px;
+    border:1px solid #437a83;border-radius:9px;background:#123549;
+    color:#b7dae1;font-size:10px;font-weight:750;padding:7px 10px;
+    white-space:nowrap;cursor:pointer;transition:background .17s,border-color .17s;
+  }
+  .ql-panel-mode-btn[aria-pressed="true"] {
+    border-color:#70ddbb;color:#e8fff6;
+    background:linear-gradient(115deg,#14695e,#1d7b72);
+    box-shadow:inset 0 1px #b5fff02c;
+  }
+  .ql-panel-mode-btn:hover{filter:brightness(1.13)}
+  .ql-panel-demo-note {
+    display:none;font-size:10px;color:#6b8591;line-height:1.5;
+    margin:13px 0 0;padding:9px 12px;border:1px solid #a6b9c2;
+    border-radius:8px;background:#e1edf2c9;
+  }
+  .ql-panel-upper,.ql-panel-lower,.ql-panel-wires,
+  .ql-panel-duct,.ql-panel-demo-note,.ql-panel-callouts,
+  .ql-panel-interrail{display:none}
+  #previewArea.ql-real-panel .board {
+    background:radial-gradient(ellipse at 46% 0%,#bacddc 0%,#8ea5b8 55%,#465f76 100%);
+    border:1px solid #93afbf;
+  }
+  #previewArea.ql-real-panel .cabinet {
+    background:
+      linear-gradient(90deg,#b5c9d7 0%,#f4f9fb 3%,#e7f0f5 7%,transparent 12%,transparent 87%,#9bb2c0 100%),
+      linear-gradient(165deg,#f3f8fc 0%,#d5e3eb 100%);
+    border:10px solid #d6e3e9;
+    border-top-color:#fff;border-left-color:#edf7fa;
+    border-right-color:#8ca5b5;border-bottom-color:#849dac;
+    border-radius:18px;
+    padding:18px 24px 16px;
+    box-shadow:inset 0 3px 9px #fff,
+      inset 7px 0 12px #799ca43d,inset -9px -8px 17px #6682916b,
+      2px 9px 0 #546f824a,0 17px 30px #0a25365c;
+  }
+  #previewArea.ql-real-panel .cabinet-top {
+    background:linear-gradient(#f0f6f9,#a7bfce)!important;
+    color:#355369!important;border-color:#9fb7c5!important;
+    box-shadow:inset 0 1px #fff,0 3px 5px #3b566649!important;
+    min-height:32px!important;
+  }
+  #previewArea.ql-real-panel .cabinet-led{
+    background:#48d39e!important;box-shadow:0 0 10px #47d4a68c!important;
+  }
+  #previewArea.ql-real-panel .cabinet .rack-caption {
+    color:#688292;font-size:9px;margin:3px 0 12px!important;
+    border-bottom:1px solid #9ab4c466;
+  }
+  #previewArea.ql-real-panel .ql-panel-upper,
+  #previewArea.ql-real-panel .ql-panel-lower{display:grid}
+  #previewArea.ql-real-panel .ql-panel-upper{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin:4px 0 5px;
+    padding:10px 7px;border:1px solid #b3c7d0;border-radius:9px;
+    background:linear-gradient(#eaf3f7,#c6d9e3);
+    box-shadow:inset 1px 2px 5px #fff7,0 2px 4px #45657926;
+  }
+  .ql-busbar {
+    display:flex;align-items:center;gap:8px;min-width:0;
+    position:relative;padding:6px;border-radius:6px;
+    background:linear-gradient(120deg,#ecf3f7,#c9d9df);
+    border:1px solid #abc0ca;
+  }
+  .ql-busbar-tag {
+    flex:none;display:grid;place-items:center;font-weight:900;
+    min-width:27px;height:27px;border-radius:5px;
+    background:#2a70ba;color:white;box-shadow:inset 0 1px #fff4;font-size:11px;
+  }
+  .ql-busbar.ql-earth .ql-busbar-tag{
+    color:#225b38;background:repeating-linear-gradient(135deg,#f4d54e 0 7px,#54b567 7px 14px);
+    border:1px solid #89a35c;
+  }
+  .ql-bar-metal{
+    display:block;position:relative;flex:1;height:23px;min-width:30px;
+    border:1px solid #8c7c6b;border-radius:4px;
+    background:
+      radial-gradient(circle at 13px 50%,#303439 0 2px,#dadde0 2.5px 4px,#697f8a 4.5px 5px,transparent 5.5px) 0 0/27px 100% repeat-x,
+      linear-gradient(#f7dfb5 0%,#c99e62 23%,#f8d4a0 48%,#9d7144 83%,#eed0a8 100%);
+    box-shadow:inset 0 2px #fff8,inset 0 -2px #825a3f88,0 2px 3px #2a414650;
+  }
+  .ql-busbar-name{
+    position:absolute;bottom:-17px;left:35px;right:4px;
+    font-size:8px;color:#54717d;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;font-weight:700;
+  }
+  #previewArea.ql-real-panel .ql-panel-upper{margin-bottom:18px}
+  #previewArea.ql-real-panel .ql-panel-tray{position:relative;padding:0 22px 0 22px}
+  #previewArea.ql-real-panel .ql-panel-duct{display:block;position:absolute;
+    top:0;bottom:0;width:16px;pointer-events:none;z-index:0;
+    border:1px solid #a2b7c4;border-radius:4px;
+    background:
+      repeating-linear-gradient(to bottom,transparent 0 9px,#9cbbc7 9px 11px,transparent 11px 22px),
+      linear-gradient(to right,#afc4d0,#f2f7f8 55%,#8eaebc);
+    box-shadow:inset 2px 0 3px #fff8,2px 2px 5px #364e5c66;
+  }
+  #previewArea.ql-real-panel .ql-panel-duct-left{left:0}
+  #previewArea.ql-real-panel .ql-panel-duct-right{right:0}
+  #previewArea.ql-real-panel .board-rows{
+    position:relative;z-index:1;gap:17px;
+  }
+  #previewArea.ql-real-panel .rack-row .rail{
+    background:linear-gradient(#d2e1e8 0%,#bacbd6 55%,#d9e7ef 100%)!important;
+    border:3px solid #c0d3dc!important;border-top-color:#eff9fd!important;
+    border-left-color:#eff9fd!important;border-right-color:#8ca8b8!important;
+    border-bottom-color:#7894a3!important;border-radius:7px!important;
+    box-shadow:inset 0 3px 7px #8499ac45,0 4px 7px #4b67754d!important;
+    padding:12px 8px 13px!important;
+  }
+  #previewArea.ql-real-panel .rack-row .rail::before{
+    background:linear-gradient(#697e8c,#c9e1ed 34%,#7b9bab 65%,#5e7789)!important;
+    height:9px!important;top:6px!important;
+  }
+  #previewArea.ql-real-panel .board .rack-row .breakers::before{
+    background:linear-gradient(#61798b,#dee9ef 18%,#a5bbc7 43%,#6d8796 56%,#e4f0f4 72%,#587889);
+    box-shadow:0 1px 5px #1f40535c;
+  }
+  #previewArea.ql-real-panel .board .rack-row .breaker:has(.ql-hd-art) .ql-hd-img{
+    filter:drop-shadow(1px 5px 2px #112e4170)!important;
+  }
+  #previewArea.ql-real-panel .rack-index-rich {padding:3px 6px 6px}
+  #previewArea.ql-real-panel .ql-panel-lower{
+    margin:15px 4px 0;border-top:1px solid #adc5d0;padding:12px 5px 0;
+    grid-template-columns:1fr auto;gap:10px;align-items:center;
+  }
+  .ql-panel-lower .ql-busbar {min-width:0}
+  .ql-panel-lower .ql-bottom-mark{font-size:9px;color:#4e7280;font-weight:800}
+  .ql-panel-callouts{
+    margin-top:15px;background:#e8f3f8;border:1px solid #a0c1cc;border-radius:9px;
+    padding:12px;color:#335d6e;font-size:10px;
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+  }
+  .ql-panel-callouts>div{display:flex;align-items:center;gap:8px;line-height:1.4}
+  .ql-callout-num{display:inline-grid;place-items:center;flex:none;
+    height:23px;width:23px;border-radius:50%;font-weight:900;
+    background:#245773;color:#fff;border:2px solid white;box-shadow:0 1px 3px #294b566d}
+  #previewArea.ql-real-panel.ql-guide-visible .ql-panel-callouts{display:grid}
+  #previewArea.ql-real-panel .ql-panel-demo-note{display:block}
+  #previewArea.ql-real-panel .cabinet-bottom{margin-top:12px}
+  /* Wires are deliberately restricted to presentation channels: no fictitious terminal mapping. */
+  #previewArea.ql-real-panel.ql-cables-visible .ql-panel-wires{
+    display:block;height:90px;position:relative;margin:0 7px 12px;overflow:hidden;
+    background:linear-gradient(to bottom,#dce9ee88,#cbdde649);
+    border-left:1px solid #aac3cf;border-right:1px solid #aac3cf;
+    border-radius:0 0 8px 8px;
+  }
+  .ql-panel-wires svg{display:block;width:100%;height:100%}
+  .ql-wire-path{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(2px 2px 1px #516e7880)}
+  .ql-wire-path.ql-phase{stroke:#704636}
+  .ql-wire-path.ql-neutral{stroke:#1b83c2}
+  .ql-wire-path.ql-earthwire{stroke:#72a842}
+  .ql-wire-path.ql-phase2{stroke:#394a53}
+  .ql-wire-path.ql-neutral2{stroke:#449dd3}
+  .ql-panel-wires .ql-cable-channel{
+    fill:none;stroke:#92aebc;stroke-width:10;opacity:.65;
+  }
+  #previewArea.ql-real-panel.ql-cables-visible .ql-panel-interrail{
+    display:block;height:66px;margin:8px 9px 0;
+    border-top:2px solid #c4d7e1;border-bottom:2px solid #a7c1cd;
+    border-radius:5px;background:#d9e8ef78;overflow:hidden;
+  }
+  .ql-panel-interrail svg{width:100%;height:100%;display:block}
+  #previewArea.ql-real-panel.ql-cables-visible .ql-panel-lower{margin-top:22px}
+  #previewArea.device-focus .ql-panel-upper,#previewArea.device-focus .ql-panel-lower,
+  #previewArea.device-focus .ql-panel-wires,#previewArea.device-focus .ql-panel-callouts,
+  #previewArea.device-focus .ql-panel-demo-note,#previewArea.device-focus .ql-panel-duct{
+    display:none!important;
+  }
+  #previewArea.device-focus .ql-panel-tray{padding:0!important}
+  #previewArea.device-focus .ql-panel-interrail{display:none!important}
+}
+@media screen and (max-width:720px){
+  #previewArea.ql-real-panel .cabinet{padding:12px 8px}
+  #previewArea.ql-real-panel .ql-panel-tray{padding:0 12px}
+  #previewArea.ql-real-panel .ql-panel-duct{width:8px}
+  #previewArea.ql-real-panel .ql-panel-upper{gap:5px;padding:7px 4px}
+  .ql-busbar-tag{min-width:22px;height:22px;font-size:10px}
+  .ql-busbar{gap:4px;padding:4px}
+  .ql-busbar-name{display:none}
+  .ql-panel-lower .ql-bottom-mark{display:none}
+  .ql-panel-callouts{grid-template-columns:1fr}
+  .ql-panel-mode-btn{font-size:9px;padding:6px 7px}
+}
+@media print{
+  .ql-panel-upper,.ql-panel-lower,.ql-panel-wires,.ql-panel-duct,.ql-panel-interrail,
+  .ql-panel-callouts,.ql-panel-mode-btn,.ql-panel-demo-note{display:none!important}
+}
