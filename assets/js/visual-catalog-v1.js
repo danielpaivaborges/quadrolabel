@@ -115,6 +115,7 @@ grid.addEventListener('click',function(e){
 },true);
 var detail=grid.closest('details');
 if(detail)detail.addEventListener('toggle',function(){if(detail.open)redraw()});
+window.qlVisualCatalogApplyFilters=applyFilters;
 window.filterQuickLibrary=applyFilters;
 window.renderQuickLibrary=function(){if(typeof renderQuickPositions==='function')renderQuickPositions();if(typeof renderPhotoCredits==='function')renderPhotoCredits();redraw()};
 redraw();

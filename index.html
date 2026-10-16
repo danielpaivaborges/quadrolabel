@@ -1300,7 +1300,7 @@ function filterQuickLibrary(){
  });
  $('quickLibraryCount').textContent=found+' de '+cards.length+' opções';
 }
-$('quickLibrarySearch').addEventListener('input',filterQuickLibrary);
+$('quickLibrarySearch').addEventListener('input',()=>{if(window.qlVisualCatalogApplyFilters)window.qlVisualCatalogApplyFilters();else filterQuickLibrary();});
 $('quickLibrary').addEventListener('click',e=>{const item=e.target.closest('[data-quick-device]');if(item){addDeviceAt(item.dataset.quickDevice,$('quickPosition').value,Number(item.dataset.quickWidth)||undefined,Number(item.dataset.quickPoles)||undefined);$('quickLibrary').closest('details').open=false}});
 
 // Workspace navigation keeps existing data and rendering logic intact.
@@ -1366,4 +1366,4 @@ $('plannerPreview').addEventListener('click',e=>{if(!e.target.closest('#plannerA
 
 $('cabinetZoom').addEventListener('change',()=>{$('boardRows').closest('.cabinet').style.zoom=Number($('cabinetZoom').value)/100});
 $('boardRows').closest('.cabinet').style.zoom=1.15;
-</script><script src="assets/js/visual-catalog-v1.js?v=1"></script></body></html>
+</script><script src="assets/js/visual-catalog-v1.js?v=2"></script></body></html>
