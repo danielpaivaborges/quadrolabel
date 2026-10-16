@@ -1,0 +1,118 @@
+/* QuadroLabel Studio — Realistic enclosure & assembly navigation, v16.
+   Screen only. Decorative door and coatings have no technical/electrical meaning. */
+@media screen {
+ .ql-finish-toolbar{
+   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+   gap:10px;margin:11px 0 13px;border:1px solid #3b6675;border-radius:11px;
+   padding:10px 12px;background:linear-gradient(115deg,#112b3c,#1b3d4f);
+   color:#ccebe7;box-shadow:0 5px 12px #0414233c;
+ }
+ .ql-finish-toolbar .ql-visual-label{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:850;color:#d4faf0}
+ .ql-finish-toolbar .ql-visual-label small{font-size:9px;color:#91b9c8;font-weight:500}
+ .ql-finish-toolbar .ql-finish-tools{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+ .ql-finish-tools label{display:flex;align-items:center;gap:6px;color:#b0d4da;font-size:10px}
+ .ql-finish-tools select{min-width:120px;max-width:170px;background:#22485a;color:#eafff9;border:1px solid #4a7f8a;border-radius:8px;padding:8px 11px;min-height:34px;font-size:10px}
+ .ql-finish-tools button{border:1px solid #527787;background:#224657;color:#e1faf2;border-radius:9px;padding:9px 12px;min-height:35px;font-size:10px;font-weight:800}
+ .ql-finish-tools button[aria-pressed="true"]{border-color:#76e5c7;background:#1c7165;color:#eafff8}
+ .ql-finish-tools button:hover{filter:brightness(1.1)}
+ #previewArea.ql-real-panel.ql-finish-industrial .board{
+   background:linear-gradient(150deg,#adcbd8,#547d98 60%,#3e607b)!important;
+   border-color:#87b0c5;
+ }
+ #previewArea.ql-real-panel.ql-finish-industrial .cabinet{
+   background:linear-gradient(116deg,#d4e4ed 0%,#fff 5%,#e2edf5 19%,#c6dce9 74%,#8caec3 100%)!important;
+   border-color:#a2c1d2!important;
+   border-left-color:#effaff!important;border-top-color:#e8f5fd!important;
+   border-bottom-color:#698da5!important;
+   box-shadow:inset 3px 4px 9px #fff, inset -12px -10px 16px #36658c66,0 13px 32px #122e487a!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-industrial .ql-panel-upper{
+   background:linear-gradient(120deg,#e5f2fa,#b3d1e3)!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-industrial .rack-row .rail{
+   background:linear-gradient(125deg,#cbe3f0,#9bbcd1 70%,#86acc2)!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-industrial .cabinet-top{
+   background:linear-gradient(#e0f3fb,#a2c3d6)!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-graphite .board{
+   background:radial-gradient(ellipse at 47% 12%,#97aab9,#314657 84%)!important;border-color:#7d8f9f;
+ }
+ #previewArea.ql-real-panel.ql-finish-graphite .cabinet{
+   background:linear-gradient(118deg,#c5d0d6 0%,#f8fcfe 8%,#d3dfe4 55%,#718996 100%)!important;
+   border-color:#8199a9!important;border-top-color:#e7f2f6!important;
+   border-left-color:#cfdee6!important;border-bottom-color:#4d6576!important;
+   box-shadow:inset 2px 5px 11px #f6fafc, inset -10px -10px 17px #324a607e,0 13px 29px #071c29a8!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-graphite .cabinet-top{
+   background:linear-gradient(#a8bbc6,#617989)!important;color:#f5fcfd!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-graphite .ql-panel-upper{
+   background:linear-gradient(#dce9ef,#a9c0cc)!important;
+ }
+ #previewArea.ql-real-panel.ql-finish-graphite .ql-panel-duct{
+   filter:brightness(.87) contrast(1.09);
+ }
+ /* Glass-front door: noninterfering visualization, not a physical protective specification. */
+ #previewArea.ql-real-panel.ql-door-closed:not(.device-focus) .cabinet{position:relative;isolation:isolate}
+ #previewArea.ql-real-panel.ql-door-closed:not(.device-focus) .cabinet::after{
+   content:"";
+   position:absolute;z-index:8;
+   inset:7px;
+   border:9px solid #b7cbd6;
+   border-top-color:#f8fcff;
+   border-left-color:#e4eff5;
+   border-right-color:#7092a7;
+   border-bottom-color:#5c7f93;
+   border-radius:15px;
+   pointer-events:none;
+   box-shadow:0 0 0 1px #415d6d8c, inset 0 0 0 2px #e1f4f788,
+    inset 0 0 19px #daedf6a3,inset 0 0 78px #7aafc132,0 8px 18px #12344b50;
+   background:
+     linear-gradient(113deg,#fff9 0%,#fff4 7%,#ffffff0b 15%,#b8dae01d 40%,#ffffff32 65%,transparent 76%),
+     linear-gradient(160deg,#fff6,transparent 26%,#c9e6ed19 45%,#fff4 80%,#9dbeca32);
+ }
+ #previewArea.ql-door-closed:not(.device-focus) .cabinet-top{
+   opacity:.86;
+ }
+ #previewArea.ql-real-panel.ql-door-closed:not(.device-focus) .ql-panel-tray{
+   filter:brightness(.94) saturate(.91);
+ }
+ /* Circuit locator */
+ .ql-circuit-finder{position:relative;display:grid;gap:9px;margin:0 0 12px;
+   padding:11px 13px;background:linear-gradient(120deg,#102c40,#173a4e);
+   border:1px solid #3b6779;border-radius:11px;color:#d0f1eb}
+ .ql-finder-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:7px}
+ .ql-finder-head strong{font-size:11px;letter-spacing:.04em}
+ .ql-finder-head small{font-size:9px;color:#91b8c4}
+ .ql-finder-row{display:flex;align-items:center;gap:9px}
+ .ql-finder-input{flex:1;min-width:0;border:1px solid #4b7884;background:#204455;color:#e8fff8;
+   border-radius:9px;padding:9px 11px;font-size:11px;min-height:35px}
+ .ql-finder-input:focus{outline:2px solid #61daba;outline-offset:0}
+ .ql-finder-clear{border:1px solid #507d87;background:#245164;color:#e3faf2;border-radius:8px;
+   padding:8px 12px;font-size:10px;min-height:35px}
+ .ql-finder-count{font-size:10px;color:#9ddac8;white-space:nowrap}
+ .ql-finder-results{display:flex;flex-wrap:wrap;gap:6px}
+ .ql-finder-results:empty{display:none}
+ .ql-find-result{display:flex;align-items:center;gap:6px;border:1px solid #486c80;border-radius:7px;
+   background:#1c4555;color:#e3f7f4;padding:7px 9px;max-width:100%;min-width:0;font-size:10px;
+   cursor:pointer}
+ .ql-find-result b{font-size:9px;color:#9be1ce}
+ .ql-find-result span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:260px}
+ .ql-find-result:hover,.ql-find-result[aria-current="true"]{border-color:#6ee3be;background:#23685f}
+ .ql-finder-empty{color:#9bb6c1;font-size:10px;padding:5px}
+ .ql-finder-keys{font-size:9px;color:#92b1bf}
+ .ql-finder-keys kbd{font-family:inherit;border:1px solid #4f7586;padding:2px 4px;border-radius:4px;background:#22495c;color:#e5faf7}
+ .ql-found-circuit{outline:3px solid #20d3a7!important;outline-offset:4px;box-shadow:0 0 12px #27d6ab83!important}
+ @media (max-width:700px){
+   .ql-finish-toolbar{align-items:flex-start}
+   .ql-visual-label{flex-wrap:wrap}
+   .ql-finish-tools{width:100%;justify-content:flex-start}
+   .ql-finder-head small{width:100%}
+   .ql-finder-count{display:none}
+ }
+}
+@media print{
+ .ql-finish-toolbar,.ql-circuit-finder{display:none!important}
+ #previewArea .cabinet::after{display:none!important}
+}
