@@ -116,3 +116,31 @@
  .ql-finish-toolbar,.ql-circuit-finder{display:none!important}
  #previewArea .cabinet::after{display:none!important}
 }
+
+/* Presentation mode: editor goes away; board becomes the full-width protagonist. */
+@media screen {
+ html.ql-presentation .layout{
+   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+   max-width:1680px!important;margin:0 auto!important;
+ }
+ html.ql-presentation #editorPanel{display:none!important}
+ html.ql-presentation #previewArea .assembly-workspace{
+   grid-template-columns:minmax(0,1fr)!important;
+   max-width:100%;
+ }
+ html.ql-presentation #contextPanel,
+ html.ql-presentation #railOverview,
+ html.ql-presentation .ql-circuit-finder,
+ html.ql-presentation #previewArea .studio-toolbar,
+ html.ql-presentation #previewArea .rail-legend,
+ html.ql-presentation #previewArea .photo-credits,
+ html.ql-presentation #previewArea .ql-scene-lab{display:none!important}
+ html.ql-presentation #previewArea .assembly-stage{width:100%;max-width:100%;min-width:0}
+ html.ql-presentation #previewArea .assembly-stage>.board{margin:4px 0 18px!important}
+ html.ql-presentation #previewArea .ql-finish-toolbar{
+   box-shadow:0 7px 17px #020f174e;margin-top:4px;
+ }
+ html.ql-presentation #previewArea .viewport-heading{margin-bottom:7px!important}
+ html.ql-presentation #previewArea{padding:18px!important}
+}
+@media print{html.ql-presentation .layout{display:block!important}html.ql-presentation #editorPanel{display:none!important}}
