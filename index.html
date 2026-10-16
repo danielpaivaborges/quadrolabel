@@ -951,6 +951,65 @@ $('railOverview').addEventListener('click',e=>{
  row.classList.add('ql-rail-spotlight');row.scrollIntoView({behavior:'smooth',block:'center'});
  btn.focus({preventScroll:true});
 });
+function qlNormalizeSearch(value){
+ return String(value??'').toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+}
+function qlSearchCircuitIndices(query){
+ const term=qlNormalizeSearch(query);
+ const all=circuits.map((c,i)=>({c,i})).filter(({c})=>!c.empty);
+ if(!term)return all.map(x=>x.i);
+ const parts=term.split(/\s+/).filter(Boolean);
+ return all.filter(({c,i})=>{
+  const pos=findDinPosition(i);
+  const position=pos?'trilho '+pos.rail+' m'+String(pos.start).padStart(2,'0')+' modulo '+pos.start:'';
+  const family=hardwareTypes[c.device]||'disjuntor';
+  const haystack=qlNormalizeSearch([c.name,c.type,types[c.type]?.title,c.device,family,c.amp,c.poles+' modulos',position].join(' '));
+  return parts.every(part=>haystack.includes(part));
+ }).map(x=>x.i);
+}
+function renderCircuitFinder(){
+ const field=$('qlCircuitFindInput'),host=$('qlCircuitFindResults'),count=$('qlCircuitFindCount');
+ if(!field||!host||!count)return;
+ const query=field.value,found=qlSearchCircuitIndices(query),max=query.trim()?10:6;
+ count.textContent=found.length+' resultado(s)';
+ host.innerHTML=found.slice(0,max).map(i=>{
+  const c=circuits[i],pos=findDinPosition(i),active=c.id===selectedDeviceId;
+  return '<button type="button" class="ql-find-result" data-ql-locate="'+i+'" '+(active?'aria-current="true"':'')+' title="Localizar '+safe(c.name||'Dispositivo')+'"><b>'+String(i+1).padStart(2,'0')+'</b><span>'+safe(c.name||hardwareTypes[c.device]||'Dispositivo')+'</span><b>'+(pos?'T'+pos.rail+'·M'+pos.start:'—')+'</b></button>';
+ }).join('')+(found.length>max?'<span class="ql-finder-empty">+'+(found.length-max)+' resultados · refine a pesquisa</span>':'')+(!found.length?'<span class="ql-finder-empty">Nenhum circuito encontrado.</span>':'');
+}
+function qlLocateCircuit(index){
+ if(!Number.isInteger(index)||index<0||index>=circuits.length||circuits[index].empty)return;
+ focusSelectedDevice(index);renderCircuitFinder();
+ $('boardRows').querySelectorAll('.ql-found-circuit').forEach(x=>x.classList.remove('ql-found-circuit'));
+ const node=$('boardRows').querySelector('[data-inspect="'+index+'"]');
+ if(node){node.classList.add('ql-found-circuit');node.scrollIntoView({behavior:'smooth',block:'center'});node.focus({preventScroll:true})}
+}
+$('qlCircuitFindInput').addEventListener('input',renderCircuitFinder);
+$('qlCircuitFindClear').addEventListener('click',()=>{
+ $('qlCircuitFindInput').value='';renderCircuitFinder();$('qlCircuitFindInput').focus();
+});
+$('qlCircuitFindResults').addEventListener('click',e=>{
+ const btn=e.target.closest('[data-ql-locate]');if(!btn)return;
+ qlLocateCircuit(Number(btn.dataset.qlLocate));
+});
+document.addEventListener('keydown',e=>{
+ const target=e.target,editing=target.closest?.('input,textarea,select,[contenteditable="true"]');
+ if(e.key==='/'&&!editing&&!e.altKey&&!e.ctrlKey&&!e.metaKey){
+  e.preventDefault();$('qlCircuitFindInput').focus();return;
+ }
+ if(e.key==='Escape'){
+  if(target===$('qlCircuitFindInput')){$('qlCircuitFindInput').value='';renderCircuitFinder();$('qlCircuitFindInput').blur();return}
+  if(!editing&&selectedDeviceId){selectedDeviceId=null;renderSelectedDevice();renderCircuitFinder()}return;
+ }
+ if(!editing&&e.altKey&&!e.ctrlKey&&!e.metaKey&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){
+  const list=circuits.map((c,i)=>c.empty?-1:i).filter(i=>i>=0);
+  if(!list.length)return;
+  e.preventDefault();
+  const cur=list.findIndex(i=>circuits[i].id===selectedDeviceId);
+  const next=e.key==='ArrowRight'?(cur<0?0:(cur+1)%list.length):(cur<0?list.length-1:(cur-1+list.length)%list.length);
+  qlLocateCircuit(list[next]);
+ }
+});
 function renderRailOverview(){
  const host=$('railOverview');if(!host)return;
  const rows=railDistribution(circuits),cap=rowCapacity(),total=Math.max(rows.length,plannedRailCount),selected=circuits.findIndex(c=>c.id===selectedDeviceId);
