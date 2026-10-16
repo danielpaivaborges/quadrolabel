@@ -16,6 +16,13 @@ Aplicativo web independente para criar etiquetas de identificação de circuitos
 
 A biblioteca rápida contém **39 configurações visuais** agrupadas em proteção, comando, medição e automação, com filtros por largura modular, pesquisa textual, favoritos e itens recentes. Favoritos e histórico ficam apenas no armazenamento local deste navegador e não modificam o arquivo JSON de projetos. As ilustrações e combinações de larguras são referências genéricas de interface: **não são catálogo comercial ou especificação de polos, dimensões e conexões de qualquer fabricante**. Confirme sempre o equipamento real antes de usar o desenho em uma montagem.
 
+
+## Biblioteca de dispositivos HD — larguras reais da interface
+
+As **39 configurações visuais** da galeria DIN têm agora caminhos de ilustração por largura. Para larguras representadas na biblioteca, são usados desenhos SVG na proporção da quantidade de módulos (77 unidades gráficas por módulo, altura de referência 246). As famílias MCB, IDR e DPS mantêm seus arquivos de variantes anteriores; novos arquivos foram acrescentados para contator, temporizador, medidor, seccionadora, relé de tensão, protetor de tensão, fonte e automação.
+
+As frentes ilustram detalhes visuais específicos (teclas, bornes, janelas de status, LCD, LEDs e grelhas), **sem alegar compatibilidade, conexões, certificação, valores elétricos ou número de polos reais**. Dados de equipamento devem ser conferidos com a ficha do fabricante; a relação entre largura DIN e quantidade de polos não é automática.
+
 ## Executar
 
 Abra `index.html` em seu navegador. Não é necessário instalar dependências nem criar conta.

@@ -775,11 +775,10 @@ function photoSource(kind){const name=hardwarePhotoFiles[kind];return !name?'':n
 const hardwareTypes={mcb:'Disjuntor termomagnético',idr:'Interruptor diferencial residual',dps:'Dispositivo de proteção contra surtos',contactor:'Contator modular',timer:'Temporizador',meter:'Medidor de energia',isolator:'Chave seccionadora',voltageRelay:'Relé de tensão',protector:'Protetor de subtensão/sobretensão',powerSupply:'Fonte DIN',automation:'Módulo de automação'};
 let hardwareRenderSequence=0;
 function deviceVariantPath(kind,modules){
- const n=Number(modules);
- if(kind==='mcb'&&[2,3,4].includes(n))return 'assets/devices/hd/mcb-'+n+'m.svg';
- if(kind==='idr'&&n===4)return 'assets/devices/hd/idr-4m.svg';
- if(kind==='dps'&&[2,3,4].includes(n))return 'assets/devices/hd/dps-'+n+'m.svg';
- return 'assets/devices/hd/'+kind+'.svg';
+ const defaults={mcb:1,idr:2,dps:1,contactor:2,timer:1,meter:2,isolator:2,voltageRelay:2,protector:2,powerSupply:3,automation:4};
+ const widths={mcb:[1,2,3,4],idr:[2,4],dps:[1,2,3,4],contactor:[1,2,3,4],timer:[1,2],meter:[1,2,3,4,6],isolator:[1,2,3,4],voltageRelay:[1,2,3],protector:[1,2,3],powerSupply:[2,3,4,6],automation:[2,4,6,8]};
+ const d=defaults[kind]||1,n=Number(modules)||d;
+ return 'assets/devices/hd/'+kind+(n!==d&&widths[kind]&&widths[kind].includes(n)?'-'+n+'m':'')+'.svg';
 }
 function hardwareSVG(kind,amp='',modules){const k=hardwareTypes[kind]?kind:'mcb';
 const face={mcb:'#f3f7fa',idr:'#e9f2fc',dps:'#f7f3ea',contactor:'#e9edf2',timer:'#f2f4f6',meter:'#ecf2ef',isolator:'#edf0ed',voltageRelay:'#eef0fb',protector:'#f2edf9',powerSupply:'#edf5f7',automation:'#eaf5ef'}[k];
@@ -811,7 +810,7 @@ const vectorArt='<svg viewBox="0 0 82 175" role="img" aria-label="'+safe(hardwar
 '<rect x="11" y="23" width="1.8" height="127" rx=".8" fill="url(#'+uid+'-edge)" opacity=".45"/></svg>';
 const visualMode=$('deviceVisual')?.value;
 if(visualMode==='hd'||visualMode==='illustrated'){
- const src=deviceVariantPath(k,modules)+'?v=3';
+ const src=deviceVariantPath(k,modules)+'?v=5';
  const ampTag=String(amp||'').trim();
  return '<span class="ql-hd-art" role="img" aria-label="'+safe(hardwareTypes[k])+' — ilustração vetorial de alta definição"><img class="ql-hd-img" src="'+src+'" alt="" loading="lazy" decoding="async" draggable="false" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="ql-hd-fallback" hidden>'+vectorArt+'</span>'+(ampTag?'<span class="ql-hd-rating">'+safe(ampTag.slice(0,16))+'</span>':'')+'</span>';
 }

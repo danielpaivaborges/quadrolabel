@@ -1,0 +1,113 @@
+{
+  "version": 2,
+  "illustrativeOnly": true,
+  "unitsPerModule": 77,
+  "viewBoxHeight": 246,
+  "notice": "Ilustrações conceituais, não desenhos executivos nem equipamentos homologados.",
+  "families": {
+    "contactor": {
+      "defaultWidth": 2,
+      "availableWidths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "style": "CONTATOR"
+    },
+    "timer": {
+      "defaultWidth": 1,
+      "availableWidths": [
+        1,
+        2
+      ],
+      "style": "TEMPORIZADOR"
+    },
+    "meter": {
+      "defaultWidth": 2,
+      "availableWidths": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "style": "MEDIDOR kWh"
+    },
+    "isolator": {
+      "defaultWidth": 2,
+      "availableWidths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "style": "SECCIONADORA"
+    },
+    "voltageRelay": {
+      "defaultWidth": 2,
+      "availableWidths": [
+        1,
+        2,
+        3
+      ],
+      "style": "RELÉ TENSÃO"
+    },
+    "protector": {
+      "defaultWidth": 2,
+      "availableWidths": [
+        1,
+        2,
+        3
+      ],
+      "style": "PROTETOR V"
+    },
+    "powerSupply": {
+      "defaultWidth": 3,
+      "availableWidths": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "style": "FONTE DIN"
+    },
+    "automation": {
+      "defaultWidth": 4,
+      "availableWidths": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "style": "AUTOMAÇÃO"
+    }
+  },
+  "additionalExistingFamilies": {
+    "mcb": {
+      "defaultWidth": 1,
+      "availableWidths": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "idr": {
+      "defaultWidth": 2,
+      "availableWidths": [
+        2,
+        4
+      ]
+    },
+    "dps": {
+      "defaultWidth": 1,
+      "availableWidths": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  }
+}
