@@ -29,6 +29,12 @@ A área de montagem apresenta três modos **Oficina**, **Inspeção** e **Expand
 
 As representações são **estritamente visuais**: não são esquema de montagem, tabela de ligação, dimensionamento, especificação de seção ou diagrama de aterramento. Não alteram a impressão das etiquetas.
 
+## Visual Studio · iluminação e inspeção (v21)
+
+O Visual Studio oferece três ambientes de luz (Oficina clara, Showroom e Fotografia), ajuste de intensidade, três ângulos de câmera e destaque do dispositivo selecionado com navegação anterior/próximo. O painel de inspeção resume nome, família, posição DIN e corrente cadastrada, aproveitando o mecanismo de seleção do QuadroLabel sem reimplementar o editor. As preferências são locais (`quadrolabel-visual-studio-v21`) e independentes dos projetos JSON.
+
+O efeito de iluminação é uma sobreposição gráfica; **não equivale a fotografia, simulação elétrica, representação fidedigna da luminotécnica ou projeto executivo.** Nunca altera as dimensões da impressão.
+
 ## Executar
 
 Abra `index.html` em seu navegador. Não é necessário instalar dependências nem criar conta.
