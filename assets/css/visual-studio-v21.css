@@ -49,7 +49,7 @@
 #previewArea.ql-vs-light-soft .cabinet>.ql-vs-light-overlay{background:radial-gradient(ellipse at 51% 0%,#ffeac78a,transparent 60%),linear-gradient(135deg,#fff3e05c,transparent 48%,#457b914d)}
 #previewArea.ql-vs-camera-left .cabinet{transform:perspective(1550px) rotateY(5deg) rotateX(1deg)!important;transform-origin:center center}
 #previewArea.ql-vs-camera-right .cabinet{transform:perspective(1550px) rotateY(-5deg) rotateX(1deg)!important;transform-origin:center center}
-#previewArea.ql-vs-camera-front .cabinet{transform:none!important}
+/* Frontal inherits the existing cabinetView perspective setting when selected. */
 #previewArea.ql-vs-spotlight.ql-vs-has-selection .board .rack-row .breaker:not(.device-selected){opacity:.4;filter:grayscale(.45) saturate(.7);transition:opacity .22s,filter .22s}
 #previewArea.ql-vs-spotlight.ql-vs-has-selection .board .rack-row .breaker.device-selected{z-index:4!important;opacity:1!important;filter:drop-shadow(0 0 9px #5bf4ba) drop-shadow(0 6px 7px #09283d)!important;outline:3px solid #26ce9f!important;outline-offset:3px!important;border-radius:4px}
 #previewArea.ql-vs-spotlight.ql-vs-has-selection .board .rack-row:not(.ql-selected-rail){filter:saturate(.74)}
