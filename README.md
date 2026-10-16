@@ -23,6 +23,12 @@ As **39 configurações visuais** da galeria DIN têm agora caminhos de ilustra�
 
 As frentes ilustram detalhes visuais específicos (teclas, bornes, janelas de status, LCD, LEDs e grelhas), **sem alegar compatibilidade, conexões, certificação, valores elétricos ou número de polos reais**. Dados de equipamento devem ser conferidos com a ficha do fabricante; a relação entre largura DIN e quantidade de polos não é automática.
 
+## Estúdio de montagem · PRO (2026)
+
+A área de montagem apresenta três modos **Oficina**, **Inspeção** e **Expandida**, além de quatro camadas visuais: canaletas perfuradas, bornes auxiliares genéricos, fixações de gabinete e canaletas sem tampa. Os elementos adicionais são regenerados após alterações na distribuição dos trilhos. As preferências de exibição permanecem localmente no navegador, fora dos projetos JSON.
+
+As representações são **estritamente visuais**: não são esquema de montagem, tabela de ligação, dimensionamento, especificação de seção ou diagrama de aterramento. Não alteram a impressão das etiquetas.
+
 ## Executar
 
 Abra `index.html` em seu navegador. Não é necessário instalar dependências nem criar conta.
