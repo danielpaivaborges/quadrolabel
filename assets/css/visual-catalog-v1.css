@@ -1,0 +1,51 @@
+/* QuadroLabel Studio — biblioteca visual DIN, v1. Interface apenas, sem mudanças na impressão. */
+@media screen{
+ .ql-vc-toolbar{margin:10px 12px 0;padding:13px;border-radius:13px;background:linear-gradient(125deg,#0e2738,#14394b);border:1px solid #3c6978;color:#e4f8fb}
+ .ql-vc-heading{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:11px}
+ .ql-vc-heading>div{display:grid;gap:3px}
+ .ql-vc-heading>div>span{font-size:9px;font-weight:800;letter-spacing:1.6px;color:#83d8c0}
+ .ql-vc-heading strong{font-size:16px;color:#f0ffff;letter-spacing:-.3px}
+ .ql-vc-version{white-space:nowrap;font-size:9px;font-weight:800;padding:6px 8px;border-radius:18px;background:#1a665f;color:#b1ffe7;border:1px solid #3f9181}
+ .ql-vc-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+ .ql-vc-filters button{padding:7px 10px!important;font-size:10px!important;border:1px solid #426b79;background:#1b3d50;color:#b8d9e7;border-radius:999px;box-shadow:none!important;min-height:30px}
+ .ql-vc-filters button[aria-pressed="true"]{background:linear-gradient(120deg,#258d75,#1e695d);border-color:#65dbc0;color:#f0fff9}
+ .ql-vc-options{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+ .ql-vc-options label{display:flex;align-items:center;gap:9px;font-size:10px;margin:0;color:#a6cad1}
+ .ql-vc-options select{width:auto;min-width:122px;min-height:35px;font-size:10px;background:#163749;border:1px solid #50798b;padding:8px 9px}
+ .ql-vc-options small{font-size:9px;color:#89aebd;max-width:330px;line-height:1.45}
+ #quickLibrary.ql-vc-grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:11px;max-height:540px;align-items:stretch;padding:12px;scrollbar-color:#3f7881 #143243}
+ .ql-vc-card{position:relative;min-width:0;border:1px solid #496b7b;border-radius:13px;background:radial-gradient(ellipse at 48% 8%,#355d6f 0%,#16334a 65%,#102639 100%);box-shadow:inset 0 1px #ffffff16,0 8px 14px #041a2839;overflow:hidden}
+ .ql-vc-card:hover{border-color:#7de7c6;transform:translateY(-1px)}
+ .ql-vc-card[hidden]{display:none!important}
+ #quickLibrary .ql-vc-card .ql-vc-insert{display:flex;min-height:242px;width:100%;padding:12px 8px 10px;border:0!important;background:transparent!important;border-radius:0;box-shadow:none;align-items:center;gap:3px}
+ #quickLibrary .ql-vc-card .ql-vc-insert:hover{filter:none;transform:none}
+ .ql-vc-family{color:#93c5c9;font-size:8px;font-weight:900;letter-spacing:1.15px;align-self:flex-start;margin-left:4px}
+ #quickLibrary .ql-vc-card .ql-vc-art{height:139px;width:100%;display:grid;place-items:center;overflow:hidden;margin:0}
+ #quickLibrary .ql-vc-card .ql-vc-art svg{height:127px;max-width:90%;width:auto}
+ #quickLibrary .ql-vc-card .ql-vc-art .ql-hd-art{height:133px!important;width:auto;max-width:100%;display:flex;align-items:center;justify-content:center}
+ #quickLibrary .ql-vc-card .ql-vc-art .ql-hd-img{max-height:129px!important;width:auto!important;max-width:100%!important;object-fit:contain;filter:drop-shadow(1px 6px 5px #081b2799)}
+ #quickLibrary .ql-vc-card .ql-vc-art .ql-photo-frame{max-height:130px;max-width:94%;display:flex;justify-content:center}
+ #quickLibrary .ql-vc-card .ql-vc-art .ql-photo{max-height:128px;object-fit:contain}
+ #quickLibrary .ql-vc-card strong{font-size:11px;color:#f1fcff;text-align:center;line-height:1.2;min-height:27px;display:flex;align-items:center;justify-content:center}
+ .ql-vc-caption{font-size:9px;color:#b4d8db;background:#0d283a;border-radius:12px;padding:3px 8px}
+ .ql-vc-action{font-size:9px;font-weight:850;letter-spacing:.2px;color:#92f1cc;white-space:nowrap;margin-top:auto}
+ #quickLibrary .ql-vc-card button.ql-vc-favorite{position:absolute;top:6px;right:7px;display:grid;place-items:center;width:29px;height:29px;min-height:0;border-radius:9px;background:#16354bcc;border:1px solid #436779;color:#c9dfeb;font-size:19px;line-height:1;box-shadow:none;padding:0;z-index:2}
+ #quickLibrary .ql-vc-card button.ql-vc-favorite.chosen{color:#ffe28c;background:#664f2588;border-color:#d9b957}
+ #quickLibrary .ql-vc-card button.ql-vc-favorite:hover{background:#276d68;border-color:#73d8bc}
+ .ql-vc-empty{margin:0 12px 12px;background:#102c40;border:1px dashed #507a89;border-radius:12px;padding:20px;color:#d2ebf2;text-align:center}
+ .ql-vc-empty[hidden]{display:none}
+ .ql-vc-empty p{margin:6px 0 13px;font-size:11px;color:#9dbac8}
+ .ql-vc-empty button{background:#23665d;border-color:#4ab397;color:#e8fff6}
+ @media(max-width:720px){
+ .ql-vc-toolbar{margin:9px 8px 0;padding:11px}
+ .ql-vc-heading strong{font-size:13px}
+ .ql-vc-version{font-size:8px}
+ #quickLibrary.ql-vc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:8px}
+ #quickLibrary .ql-vc-card .ql-vc-insert{min-height:225px}
+ #quickLibrary .ql-vc-card .ql-vc-art{height:120px}
+ #quickLibrary .ql-vc-card .ql-vc-art .ql-hd-art{height:115px!important}
+ #quickLibrary .ql-vc-card .ql-vc-art .ql-hd-img{max-height:113px!important}
+ }
+ @media(max-width:370px){#quickLibrary.ql-vc-grid{grid-template-columns:1fr 1fr}.ql-vc-filters button{padding:6px 7px!important}}
+}
+@media print{.ql-vc-toolbar,.ql-vc-empty{display:none!important}}

@@ -12,6 +12,10 @@ Aplicativo web independente para criar etiquetas de identificação de circuitos
 - Salvamento automático local, exportação e importação de projeto JSON.
 - Interface adaptável a desktop e celular, sem bibliotecas externas.
 
+## Catálogo visual DIN
+
+A biblioteca rápida contém **39 configurações visuais** agrupadas em proteção, comando, medição e automação, com filtros por largura modular, pesquisa textual, favoritos e itens recentes. Favoritos e histórico ficam apenas no armazenamento local deste navegador e não modificam o arquivo JSON de projetos. As ilustrações e combinações de larguras são referências genéricas de interface: **não são catálogo comercial ou especificação de polos, dimensões e conexões de qualquer fabricante**. Confirme sempre o equipamento real antes de usar o desenho em uma montagem.
+
 ## Executar
 
 Abra `index.html` em seu navegador. Não é necessário instalar dependências nem criar conta.
